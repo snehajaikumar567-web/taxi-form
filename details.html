@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salem to Ariyalur Taxi Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#ffc107;
+      --ink:#19194d;
+      --muted:#888ca0;
+      --card:#fff;
+      --bg:#fff;
+      --border:#19194d;
+      --border-thick:3px;
+      --border-hover:#ff9900;
+      --shadow:0 2px 16px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.5;
+    }
+    /* NAVBAR */
+    .navbar{
+      background:var(--brand);
+      color:#fff;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+      position:sticky; top:0; z-index:1000;
+    }
+    .nav-container{
+      max-width:1200px;
+      margin:auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 24px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-weight:700}
+    .brand img{width:40px;height:40px}
+    .brand span{font-size:20px}
+    .nav-links{
+      display:flex; align-items:center; gap:32px;
+      list-style:none; margin:0; padding:0;
+    }
+    .nav-links a{color:#fff; text-decoration:none; font-weight:600; font-size:1.1rem;}
+    .nav-links a:hover{color:#222}
+    /* HEADER */
+    .details-header {
+      margin-top: 32px;
+      margin-bottom: 8px;
+      margin-left: 24px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+    .details-title {
+      margin-left: 24px;
+      margin-bottom: 32px;
+      font-size: 2.3rem;
+      color: var(--ink);
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+    /* VEHICLE CARDS */
+    .vehicle-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 48px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      align-items: stretch;
+    }
+    .vehicle-card {
+      background: var(--card);
+      border: var(--border-thick) solid var(--border);
+      border-radius: 12px;
+      width: 100%;
+      min-width: 220px;
+      max-width: 340px;
+      padding: 32px 24px 24px 24px;
+      position: relative;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+    .vehicle-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 8px 32px rgba(255,153,0,.15);
+      transform: translateY(-6px) scale(1.03);
+    }
+    .vehicle-price {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--brand);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 1.4rem;
+      padding: 0.5rem 2.2rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 2px solid var(--border-hover);
+      transition: border-color 0.3s;
+    }
+    .vehicle-card:hover .vehicle-price {
+      border-color: var(--border);
+    }
+    .vehicle-type {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 1.2rem 0;
+      color: var(--ink);
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .vehicle-info {
+      width: 100%;
+      margin-bottom: 1.2rem;
+      font-size: 1.18rem;
+    }
+    .vehicle-info p {
+      margin: 0.7rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.15rem;
+    }
+    .vehicle-info span {
+      font-weight: 700;
+      color: var(--ink);
+      margin-left: 12px;
+    }
+    .vehicle-info p:not(:last-child) {
+      border-right: none;
+      border-bottom: 2px solid var(--brand);
+      padding-bottom: 0.3rem;
+    }
+    .vehicle-note {
+      color: #222;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .book-btn {
+      background: var(--brand);
+      color: var(--ink);
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      padding: 0.8rem 2.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .book-btn:hover {
+      background: var(--ink);
+      color: var(--brand);
+      transform: scale(1.05);
+    }
+    @media (max-width: 1200px) {
+      .vehicle-cards { grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 900px) {
+      .vehicle-cards { grid-template-columns: 1fr;}
+      .nav-container { flex-direction: column; gap: 12px; }
+      .details-title, .details-header { margin-left: 8px; }
+      .vehicle-card { max-width: 98vw; }
+    }
+    @media (max-width: 600px) {
+      .details-title { font-size: 1.3rem; }
+      .vehicle-type { font-size: 1.3rem; }
+      .vehicle-card { padding: 18px 8px 18px 8px; }
+      .vehicle-price { font-size: 1rem; padding: 0.3rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" alt="Taxi logo" />
+        <span>QuickTaxi</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#booking">Quick Booking</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="details-header">Choose your vehicle type</div>
+    <h1 class="details-title">Book Salem to Ariyalur One Way Drop Taxi</h1>
+    <div class="vehicle-cards">
+      <!-- SEDAN -->
+      <div class="vehicle-card">
+        <div class="vehicle-price">Rs. 2850</div>
+        <div class="vehicle-type">SEDAN</div>
+        <div class="vehicle-info">
+          <p>Distance <span>175 km</span></p>
+          <p>Fare <span>Rs. 14 / KM</span></p>
+          <p>Duration <span>3 hours 26 mins</span></p>
+        </div>
+        <div class="vehicle-note">Extra Toll at actuals + Extra Permit charges applicable.</div>
+        <button class="book-btn">BOOK NOW</button>
+      </div>
+      <!-- ETIOS -->
+      <div class="vehicle-card">
+        <div class="vehicle-price">Rs. 3025</div>
+        <div class="vehicle-type">ETIOS</div>
+        <div class="vehicle-info">
+          <p>Distance <span>175 km</span></p>
+          <p>Fare <span>Rs. 15 / KM</span></p>
+          <p>Duration <span>3 hours 26 mins</span></p>
+        </div>
+        <div class="vehicle-note">Extra Toll at actuals + Extra Permit charges applicable.</div>
+        <button class="book-btn">BOOK NOW</button>
+      </div>
+      <!-- SUV -->
+      <div class="vehicle-card">
+        <div class="vehicle-price">Rs. 3825</div>
+        <div class="vehicle-type">SUV</div>
+        <div class="vehicle-info">
+          <p>Distance <span>175 km</span></p>
+          <p>Fare <span>Rs. 19 / KM</span></p>
+          <p>Duration <span>3 hours 26 mins</span></p>
+        </div>
+        <div class="vehicle-note">Extra Toll at actuals + Extra Permit charges applicable.</div>
+        <button class="book-btn">BOOK NOW</button>
+      </div>
+      <!-- INNOVA -->
+      <div class="vehicle-card">
+        <div class="vehicle-price">Rs. 4000</div>
+        <div class="vehicle-type">INNOVA</div>
+        <div class="vehicle-info">
+          <p>Distance <span>175 km</span></p>
+          <p>Fare <span>Rs. 20 / KM</span></p>
+          <p>Duration <span>3 hours 26 mins</span></p>
+        </div>
+        <div class="vehicle-note">Extra Toll at actuals + Extra Permit charges applicable.</div>
+        <button class="book-btn">BOOK NOW</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

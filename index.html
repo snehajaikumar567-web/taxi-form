@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taxi Booking</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Google Font & Line Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" alt="Taxi logo" />
+        <span>QuickTaxi</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#booking">Quick Booking</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <!-- mobile hamburger (no JS needed for now) -->
+        <button class="nav-toggle" aria-label="Open Menu">
+          <i class="las la-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- BOOKING SECTION -->
+    <section id="booking" class="taxi-booking">
+      <div class="container">
+        <form action="book-ride.php" id="book-taxi-ride" class="taxi-booking-form">
+          <div class="form-field">
+            <i class="las la-user-tie"></i>
+            <input type="text" id="full-name" name="full-name" class="form-control" placeholder="Your Name" required>
+          </div>
+
+          <div class="form-field">
+            <i class="las la-envelope-open"></i>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+          </div>
+
+          <div class="form-field">
+            <i class="las la-tags"></i>
+            <select name="package-type" id="package-type" class="form-control">
+              <option value="standard">Standard</option>
+              <option value="business">Business</option>
+              <option value="economy">Economy</option>
+              <option value="vip-spacial">VIP Special</option>
+              <option value="comfort">Comfort</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <i class="las la-user-friends"></i>
+            <select name="passengers" id="passengers" class="form-control">
+              <option value="1">1 Person</option>
+              <option value="2">2 Persons</option>
+              <option value="3">3 Persons</option>
+              <option value="4">4 Persons</option>
+              <option value="5">5 Persons</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <i class="las la-map-marker"></i>
+            <input type="text" id="start-dest" name="start-dest" class="form-control" placeholder="Start Destination" required autocomplete="off">
+            <div id="start-suggestions" class="suggestions"></div>
+          </div>
+
+          <div class="form-field">
+            <i class="las la-map-marker"></i>
+            <input type="text" id="end-dest" name="end-dest" class="form-control" placeholder="End Destination" required autocomplete="off">
+            <div id="end-suggestions" class="suggestions"></div>
+          </div>
+
+          <div class="form-field">
+            <i class="las la-calendar"></i>
+            <input type="date" id="ride-date" name="ride-date" class="form-control" required>
+          </div>
+
+          <div class="form-field">
+            <i class="las la-clock"></i>
+            <input type="time" id="ride-time" name="ride-time" class="form-control" required>
+          </div>
+
+          <div class="form-field button-field">
+            <button id="submit" class="default-btn" type="submit">Book Your Taxi</button>
+          </div>
+
+          <div id="form-messages" class="alert" role="alert" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ROUTES GRID (5 columns) -->
+    <section id="routes" class="routes">
+      <div class="container">
+        <h2 class="section-title">Popular Routes From Salem</h2>
+
+        <div class="grid-5">
+          <!-- row 1 -->
+          <a href="details.html" class="card">
+            <i class="las la-car-side card-icon"></i>
+            <h3>Salem ⇌ Ariyalur Taxi</h3>
+            <span class="card-link">View Details</span>
+          </a>
+          <a href="details.html" class="card">
+            <i class="las la-car-side card-icon"></i>
+            <h3>Salem ⇌ Chengalpattu Taxi</h3>
+            <span class="card-link">View Details</span>
+          </a>
+          <a href="details.html" class="card">
+            <i class="las la-car-side card-icon"></i>
+            <h3>Salem ⇌ Chennai Taxi</h3>
+            <span class="card-link">View Details</span>
+          </a>
+          <a href="details.html" class="card">
+            <i class="las la-car-side card-icon"></i>
+            <h3>Salem ⇌ Coimbatore Taxi</h3>
+            <span class="card-link">View Details</span>
+          </a>
+          <a href="details.html" class="card">
+            <i class="las la-car-side card-icon"></i>
+            <h3>Salem ⇌ Cuddalore Taxi</h3>
+            <span class="card-link">View Details</span>
+          </a>
+
+          <!-- row 2 -->
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Dharmapuri Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Dindigul Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Erode Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Kallakurichi Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Krishnagiri Taxi</h3><span class="card-link">View Details</span></a>
+
+          <!-- row 3 -->
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Madurai Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Nagapattinam Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Namakkal Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Nilgiris Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Perambalur Taxi</h3><span class="card-link">View Details</span></a>
+
+          <!-- row 4 -->
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Pudukkottai Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Ramanathapuram Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Ranipet Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Salem Airport Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Sivaganga Taxi</h3><span class="card-link">View Details</span></a>
+
+          <!-- row 5 -->
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tenkasi Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Thanjavur Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Theni Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Thoothukudi Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tiruchirappalli Taxi</h3><span class="card-link">View Details</span></a>
+
+          <!-- row 6 -->
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tirunelveli Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tirupathur Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tiruppur Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tiruvallur Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tiruvannamalai Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tiruvarur Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Vellore Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Viluppuram Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Virudhunagar Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Bangalore Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Pondicherry Taxi</h3><span class="card-link">View Details</span></a>
+          <a href="details.html" class="card"><i class="las la-car-side card-icon"></i><h3>Salem ⇌ Tirupati Taxi</h3><span class="card-link">View Details</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + CONTACT placeholders -->
+    <section id="about" class="container soft-section">
+      <h2>About</h2>
+      <p>Reliable cabs from Salem to anywhere in Tamil Nadu. On-time pickup, transparent pricing, and clean vehicles.</p>
+    </section>
+
+    <section id="contact" class="container soft-section">
+      <h2>Contact</h2>
+      <p>Email: support@quicktaxi.example • Phone: +91-98765-43210</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> QuickTaxi. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // simple mobile menu toggle (no external JS)
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+  </script>
+</body>
+</html>
